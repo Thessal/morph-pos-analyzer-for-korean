@@ -21,7 +21,7 @@
 ## 사용법 
 * 엑셀파일로부터 trie기반 엔트리/기능어 lookup table 생성
 * 세종코퍼스로부터 smoothing된 pos전이확률, pos로부터word출력확률 lookup table 생성 
-* (주의) 세종코퍼스 수정필요: 'ᆫ'을 'ㄴ'으로 고쳐야함.
+* (주의) 세종코퍼스 수정필요: 'ᆫ'을 'ㄴ'으로 그리고 'ᆯ'를 'ㄹ'로 고쳐야함.
 ```
 python make_resources.py
 ```
@@ -36,7 +36,7 @@ python main.py 매일 아침 아프리카에선 당신은 잠에서 깨어난다
 ## 제한사항
 * 입력은 오로지 한글만 가능 (숫자, 콤마 등은 x)
 * Light한 엔트리/기능어 사전때문에 많은 단어들을 커버하지 못함 (오류: assert(fullpath_check == True))
-* 형태소 분석기 TERMINABLE 처리 하지 않음 (ex. 어/EC, 아/EC)
+* 형태소 분석기 TERMINABLE 처리 하지 않음 (ex. 어/EC, 아/EC 생략)
 * 알고리즘 최적화를 실시하지 않음 (속도문제 발생)
 
 ## 향후과제
