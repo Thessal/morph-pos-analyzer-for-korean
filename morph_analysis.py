@@ -2,11 +2,9 @@ from hangul_utils import split_syllables, join_jamos
 import xlrd
 import pickle
 
-
 ######################
 ### make_resuourse.py
 ######################
-
 # li_initial_phonemes = ['ㄱ', 'ㄲ', 'ㄴ', 'ㄷ', 'ㄸ', 'ㄹ', 'ㅁ', 'ㅂ', 'ㅃ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅉ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ']
 # li_medial_phonemes = ['ㅏ', 'ㅐ', 'ㅑ', 'ㅒ', 'ㅓ', 'ㅔ', 'ㅕ', 'ㅖ', 'ㅗ', 'ㅘ', 'ㅙ', 'ㅚ', 'ㅛ', 'ㅜ', 'ㅝ', 'ㅞ', 'ㅟ', 'ㅠ', 'ㅡ', 'ㅢ', 'ㅣ']
 # li_final_phonemes = ['ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ', 'null']
@@ -15,7 +13,6 @@ import pickle
 # print(jamo)
 # restored_text = join_jamos(jamo)
 # print(restored_text)
-
 
 # 수정해야 되는 불규칙 정보. (예: VERB-REG1~3, ADJ-REG1~3)
 # 원래대로라면, trie class에 modify함수가 있어서 수정해야함.
@@ -44,12 +41,13 @@ def infl_modify_REG(word, pos, inf):
             word = "".join(list_word)
             word = join_jamos(word)            
             return word, pos, inf # -REG0이므로, 그냥 패스
-        
         return word, pos, inf # 수정된 내용이 반영된 정보 return
-    
     else:
         return word, pos, inf # -REG가 아니므로 (modify할 필요x), 그냥 패스
 
+########################################
+""" 효율적인 검색을 위한 trie자료구조 """
+########################################
 class Trie(list):
     
     def __init__(self):
@@ -107,8 +105,7 @@ def search(trie, word):
             return trie.search(trie, word)
     except(TypeError):
         return "No such word in Trie"
-
-##########################################################################################################
+###############################################################################
 
 def insert_dic_to_trie(ent_or_fun, trie_class):
 
@@ -552,8 +549,6 @@ def insert_extdic_to_entTrie(trie):
 #############################
 ### END of make_resuourse.py
 #############################
-
-
 
 
 
