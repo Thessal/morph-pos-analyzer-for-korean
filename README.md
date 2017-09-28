@@ -8,7 +8,7 @@
 * 한국어 특성에 맞게 사전검색을 효율적으로 하기 위해 **trie 자료구조**를 사용해 사전을 구축
 * 사전과 결합규칙에 맞는 모든 경우의 수의 형태소 조합들을 출력한다. 최적의 형태소 조합 1개는 품사 태깅과 함께 확률적으로 선택
 
-## 품사 태거 (corpus기반 확률 모델)
+## 품사 태거 (corpus기반 확률 모델 (Hidden Markov Model (HMM)))
 * 조건부 확률 (태그|단어) 모델링으로 단어에 대한 태그 예측
 * 확률을 count-base로 corpus로부터 inference하기 위해 bayes rule과 markov assumption 사용
 * 수많은 sequence 조합을 계산하기 위해 (중복된 계산을 피하기 위) dynamic programming (i.e. **viterbi algorithm**) 사용
