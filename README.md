@@ -32,7 +32,7 @@ python main.py 매일 아침 아프리카에선 당신은 잠에서 깨어난다
 * 분석하고 싶은 문장을 인자로 main 함수를 실행한다.
 
 ## 예시
-![](assets/example.png)
+![](assets/example2.png)
 
 ## 제한사항
 * 문법적인 오류는 없다고 
