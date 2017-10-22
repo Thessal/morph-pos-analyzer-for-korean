@@ -27,7 +27,7 @@ python make_resources.py
 * 세종코퍼스로부터 smoothing된 pos전이확률, pos로부터word출력확률 lookup table 생성 
 * (주의) 세종코퍼스 수정필요: 'ᆫ'을 'ㄴ'으로 그리고 'ᆯ'를 'ㄹ'로 고쳐야함.
 ```
-python main.py 매일 아침 아프리카에선 당신은 잠에서 깨어난다
+python main.py 매일 아침 아프리카에선 당신은 달려야 한다
 ```
 * 분석하고 싶은 문장을 인자로 main 함수를 실행한다.
 
