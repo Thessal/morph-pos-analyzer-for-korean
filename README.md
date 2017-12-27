@@ -19,6 +19,9 @@
 * [Hangul-utils](https://github.com/kaniblu/hangul-utils)
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
+## 데이터셋
+세종코퍼스 [다운로드](https://drive.google.com/open?id=0By4RRGJEeCR5OFo4NHdrZkdMNkE) [출처:국립언어원-언어정보나눔터]
+
 ## 사용법 
 ```
 python make_resources.py
