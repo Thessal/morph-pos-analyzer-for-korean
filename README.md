@@ -1,14 +1,15 @@
 # 한국어 형태소분석 및 품사태깅
 결합규칙, 엔트리사전 등의 언어자원을 사용해 형태소 분석기를, 세종코퍼스로부터 얻은 통계정보를 통해 품사 태거를 만들었다. 형태소 분석과 품사 태깅 개념 및 관련 내용은 [**여기**](https://github.com/gritmind/review-media/blob/master/class/natural-language-processing-chungnam/README.md)에서 확인할 수 있다. 또한, [jupyter notebook](https://github.com/gritmind/morph_and_pos_analyzer_korean/tree/master/jupyter_notebooks)을 참고하면 알고리즘 단계별로 출력 결과를 확인할 수 있다.
 
-## 형태소 분석기 (사전/규칙기반 모델)
+## 모델 설명
+### 1. 형태소 분석기 (사전/규칙기반 모델)
 * Lexicon: 엔트리(체언,용언)사전 / 기능어(조사,어미)사전 (불규칙 사전 구축을 위한 inflection정보) 
 * Morphotactics: 형태소 결합 규칙 리스트 (ex. 명사+어미(x), 형용사+어미(o))
 * Orthographic rules: 불규칙 사전 또는 확장 사전 (하나의 stem에서 변하는 단어들이 많음)
 * 한국어 특성에 맞게 사전검색을 효율적으로 하기 위해 **trie 자료구조**를 사용해 사전을 구축
 * 사전과 결합규칙에 맞는 모든 경우의 수의 형태소 조합들을 출력한다. 최적의 형태소 조합 1개는 품사 태깅과 함께 확률적으로 선택
 
-## 품사 태거 (corpus기반 HMM (Hidden Markov Model) 확률 모델)
+### 2. 품사 태거 (corpus기반 HMM (Hidden Markov Model) 확률 모델)
 * 조건부 확률 (태그|단어) 모델링으로 단어에 대한 태그 예측
 * 확률을 count-base로 corpus로부터 inference하기 위해 bayes rule과 markov assumption 사용
 * 수많은 sequence 조합을 계산하기 위해 (중복된 계산을 피하기 위) dynamic programming (i.e. **viterbi algorithm**) 사용
