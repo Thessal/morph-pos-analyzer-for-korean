@@ -16,9 +16,9 @@
 * 영어와 달리 형태소 조합이 여러개 있는 한국어 특성상 품사 태깅에서 태깅과 동시에 가장 좋은 형태소 조합을 선택
 
 ## 요구사항
-* Python 3.5
-* [Hangul-utils](https://github.com/kaniblu/hangul-utils)
-* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+* python 3.5
+* hangul-utils 0.2
+* beautifulsoup4 4.5.1
 
 ## 데이터셋
 세종코퍼스 [다운로드](https://drive.google.com/open?id=0By4RRGJEeCR5OFo4NHdrZkdMNkE) [출처:국립언어원-언어정보나눔터]
