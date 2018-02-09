@@ -1,7 +1,7 @@
-# 한국어 형태소분석 및 품사태깅
+# 한국어 형태소분석 및 품사태깅 (Korean Mophological Analysis and Part of speech (POS) tagger)
 결합규칙, 엔트리사전 등의 언어자원을 사용해 형태소 분석기를, 세종코퍼스로부터 얻은 통계정보를 통해 품사 태거를 만들었다. 형태소 분석과 품사 태깅 개념 및 관련 내용은 [여기](https://github.com/gritmind/review-media/blob/master/class/natural-language-processing-chungnam/README.md)에서 확인할 수 있다. 또한, [jupyter notebook](https://github.com/gritmind/morph_and_pos_analyzer_korean/tree/master/jupyter_notebooks)을 참고하면 알고리즘 단계별로 출력 결과를 확인할 수 있다.
 
-## 모델 설명
+## Model Description
 ### 1. 형태소 분석기 (사전/규칙기반 모델)
 * Lexicon: 엔트리(체언,용언)사전 / 기능어(조사,어미)사전 (불규칙 사전 구축을 위한 inflection정보) 
 * Morphotactics: 형태소 결합 규칙 리스트 (ex. 명사+어미(x), 형용사+어미(o))
@@ -15,15 +15,15 @@
 * 수많은 sequence 조합을 계산하기 위해 (중복된 계산을 피하기 위) dynamic programming (i.e. **viterbi algorithm**) 사용
 * 영어와 달리 형태소 조합이 여러개 있는 한국어 특성상 품사 태깅에서 태깅과 동시에 가장 좋은 형태소 조합을 선택
 
-## 요구사항
+## Prerequisites
 * python 3.5
 * hangul-utils 0.2
 * beautifulsoup4 4.5.1
 
-## 데이터셋
+## Dataset
 세종코퍼스 [다운로드](https://drive.google.com/open?id=0By4RRGJEeCR5OFo4NHdrZkdMNkE) [출처:국립언어원-언어정보나눔터]
 
-## 사용법 
+## Usage
 ```
 python make_resources.py
 ```
@@ -35,7 +35,7 @@ python main.py 매일 아침 아프리카에선 당신은 달려야 한다
 ```
 * 분석하고 싶은 문장을 인자로 main 함수를 실행한다.
 
-#### 예시
+#### Example
 ![](assets/example2.PNG)
 
 ## 제한사항
@@ -44,14 +44,14 @@ python main.py 매일 아침 아프리카에선 당신은 달려야 한다
 * 형태소 분석기 TERMINABLE 처리 하지 않음 (ex. 어/EC, 아/EC 생략)
 * 알고리즘 최적화를 실시하지 않음 (속도문제 발생)
 
-## 향후과제
+## Futher Study
 * 제한사항 보완
 * 형태소 분석기 보완
    * 오타처리
    * 띄어쓰기 오류처리
    * 신조어처리
 
-## 정리
+## Summary
 _구현부분_
 * 형태소 분석기
    * 중복된 element가 많은 한글어를 효율적으로 저장하기 위해 trie 자료구조 구현 
@@ -76,7 +76,7 @@ _개념부분_
 
 
 
-## 감사
+## Acknowledgement
 충남대학교, 자연어처리
 
 
