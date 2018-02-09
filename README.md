@@ -1,12 +1,12 @@
-# 한국어 형태소분석 및 품사태깅 (Korean Mophological Analysis and Part of speech (POS) tagger)
+# 한국어 형태소분석 및 품사태깅 (Korean Mophological Analysis and Part Of Speech (POS) Tagger)
 결합규칙, 엔트리사전 등의 언어자원을 사용해 형태소 분석기를, 세종코퍼스로부터 얻은 통계정보를 통해 품사 태거를 만들었다. 형태소 분석과 품사 태깅 개념 및 관련 내용은 [여기](https://github.com/gritmind/review-media/blob/master/class/natural-language-processing-chungnam/README.md)에서 확인할 수 있다. 또한, [jupyter notebook](https://github.com/gritmind/morph_and_pos_analyzer_korean/tree/master/jupyter_notebooks)을 참고하면 알고리즘 단계별로 출력 결과를 확인할 수 있다.
 
 ## Model Description
 ### 1. 형태소 분석기 (사전/규칙기반 모델)
-* Lexicon: 엔트리(체언,용언)사전 / 기능어(조사,어미)사전 (불규칙 사전 구축을 위한 inflection정보) 
-* Morphotactics: 형태소 결합 규칙 리스트 (ex. 명사+어미(x), 형용사+어미(o))
-* Orthographic rules: 불규칙 사전 또는 확장 사전 (하나의 stem에서 변하는 단어들이 많음)
-* 한국어 특성에 맞게 사전검색을 효율적으로 하기 위해 **trie 자료구조**를 사용해 사전을 구축
+* **Lexicon**: 엔트리(체언,용언)사전 / 기능어(조사,어미)사전 (불규칙 사전 구축을 위한 inflection정보포함, 결합규칙에 사용되는 POS정보포함) 
+* **Morphotactics**: 형태소 결합 규칙 리스트 (ex. 엔트리+기능어, 엔트리+엔트리)
+* **Orthographic rules**: 형태소 확장 사전 구축에 필요한 불규칙 변형 리스트 (하나의 stem에서 변하는 단어들이 많음)
+* 한국어 특성에 맞게 검색 및 저장을 효율적으로 하기 위해 **trie 자료구조**를 사용해 사전을 구축
 * 사전과 결합규칙에 맞는 모든 경우의 수의 형태소 조합들을 출력한다. 최적의 형태소 조합 1개는 품사 태깅과 함께 확률적으로 선택
 
 ### 2. 품사 태거 (corpus기반 HMM (Hidden Markov Model) 확률 모델)
@@ -38,7 +38,7 @@ python main.py 매일 아침 아프리카에선 당신은 달려야 한다
 #### Example
 ![](assets/example2.PNG)
 
-## 제한사항
+## Limitation
 * 입력의 문법적인 오류는 없다고 가정하고 오로지 한글만 가능 (숫자, 콤마 등은 x)
 * Light한 엔트리/기능어 사전때문에 많은 단어들을 커버하지 못함 (오류: assert(fullpath_check == True))
 * 형태소 분석기 TERMINABLE 처리 하지 않음 (ex. 어/EC, 아/EC 생략)
@@ -72,9 +72,6 @@ _개념부분_
 * 형태소 분석의 결과는 모든 경우의 조합들을 포함한다. 하나의 베스트 조합을 찾는 중의성 문제는 품사태거가 같이 해결해준다.
 * HMM 모델에서 확률을 쉽게 inference하기 위해서 bayesian inference와 markov assumption 사용한다. (만약 데이터가 무한으로 있으면 위와 같은 트릭들을 사용안해도됨.)
 * viterbi 알고리즘은 각 time step마다 전 time step만 봐서 optimal path만 table로 저장해놓는게 핵심이다. 이는 중복계산을 피하기 위함이고 table에 모두 저장하면 decoding할 때 한 번에 best sequence를 찾을 수 있다.
-
-
-
 
 ## Acknowledgement
 충남대학교, 자연어처리
