@@ -1,6 +1,15 @@
 # 한국어 형태소 분석기와 품사 태거 (Korean Mophological Analysis and Part Of Speech (POS) Tagger)
 결합규칙, 엔트리사전 등의 언어자원을 사용해 규칙기반의 형태소 분석기를, 세종코퍼스로부터 얻은 통계정보를 사용해 기계학습기반(HMM/Viterbi) 품사 태거를 만들었다. 형태소 분석과 품사 태깅 개념 및 관련 내용은 [여기](https://github.com/gritmind/review-media/blob/master/class/natural-language-processing-chungnam/README.md)에서 확인할 수 있다. 또한, [jupyter notebook](https://github.com/gritmind/morph_and_pos_analyzer_korean/tree/master/jupyter_notebooks)을 참고하면 알고리즘 단계별로 출력 결과를 확인할 수 있다. 
 
+* 교착어 특징의 한국어의 형태소 분석을 위해, 규칙 및 언어 자원을 활용한 형태소 분석기 구현
+   * Lexicon (엔트리 사전), Orthographic rule (형태 변형 규칙), Morphotactics check (결합 규칙)
+   * Trie 자료 구조를 통한 효율적인 엔트리 저장
+* 언어 분석과 함께 형태소 조합의 중의성을 해결하기 위해, Hidden Markov Model 모델 기반 품사 태거 구현
+   * Bayes rule, Markov property, Independence assumption 기반의 확률 모델
+   * 세종 코퍼스로부터 전이확률, 출력확률 추정
+   * 효율적인 시퀀스 계산을 위한 Viterbi 알고리즘 구현 (dynamic programming)
+
+
 프로젝트에 대한 PPT 발표자료는 [여기](https://1drv.ms/p/s!AllPqyV9kKUrklgL_fo6D6U3FLwV)에서 확인할 수 있다.
 
 ## Model Description
