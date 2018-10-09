@@ -1,16 +1,7 @@
 # 한국어 형태소 분석기와 품사 태거 (Korean Mophological Analysis and Part Of Speech (POS) Tagger)
 결합규칙, 엔트리사전 등의 언어자원을 사용해 규칙기반의 형태소 분석기를, 세종코퍼스로부터 얻은 통계정보를 사용해 기계학습기반(HMM/Viterbi) 품사 태거를 만들었다. 형태소 분석과 품사 태깅 개념 및 관련 내용은 [여기](https://github.com/gritmind/review-media/blob/master/class/natural-language-processing-chungnam/README.md)에서 확인할 수 있다. 또한, [jupyter notebook](https://github.com/gritmind/morph_and_pos_analyzer_korean/tree/master/jupyter_notebooks)을 참고하면 알고리즘 단계별로 출력 결과를 확인할 수 있다. 
 
-  * 교착어인 한국어 형태소 분석을 위해 규칙과 언어자원을 활용한 형태소 분석기 구현
-      - 엔트리 사전, 형태 변형 규칙, 결합 규칙과 같은 도메인 지식 활용
-      - 효율적인 엔트리 저장을 위한 Trie 자료 구조 구현
-      - 형태소 조합을 위한 Recursion 구현
-  * 언어 분석과 형태소 조합의 중의성 해결을 위해 Hidden Markov 모델 기반 품사 태거 구현
-      - Bayes 규칙, Markov 특성, Independence 가정 기반의 확률 모델 정의
-      - 세종 코퍼스로부터 전이확률, 출력확률 추정
-      - 효율적인 시퀀스 계산을 위한 Viterbi 알고리즘(dynamic programming) 구현
-
-
+![](/assets/process.PNG)
 
 프로젝트에 대한 PPT 발표자료는 [여기](https://1drv.ms/p/s!AllPqyV9kKUrklgL_fo6D6U3FLwV)에서 확인할 수 있다.
 
@@ -52,18 +43,15 @@ python main.py 매일 아침 아프리카에선 당신은 달려야 한다
 #### Example
 ![](assets/example2.PNG)
 
-## Limitation
-* 입력의 문법적인 오류는 없다고 가정하고 오로지 한글만 가능 (숫자, 콤마 등은 x)
-* Light한 엔트리/기능어 사전때문에 많은 단어들을 커버하지 못함 (오류: assert(fullpath_check == True))
-* 형태소 분석기 TERMINABLE 처리 하지 않음 (ex. 어/EC, 아/EC 생략)
-* 알고리즘 최적화를 실시하지 않음 (속도문제 발생)
-
-## Futher Study
-* 제한사항 보완
-* 형태소 분석기 보완
-   * 오타처리
-   * 띄어쓰기 오류처리
-   * 신조어처리
+## 주요내용
+* 교착어인 한국어 형태소 분석을 위해 규칙과 언어자원을 활용한 형태소 분석기 구현
+    - 엔트리 사전, 형태 변형 규칙, 결합 규칙과 같은 도메인 지식 활용
+    - 효율적인 엔트리 저장을 위한 Trie 자료 구조 구현
+    - 형태소 조합을 위한 Recursion 구현
+* 언어 분석과 형태소 조합의 중의성 해결을 위해 Hidden Markov 모델 기반 품사 태거 구현
+    - Bayes 규칙, Markov 특성, Independence 가정 기반의 확률 모델 정의
+    - 세종 코퍼스로부터 전이확률, 출력확률 추정
+    - 효율적인 시퀀스 계산을 위한 Viterbi 알고리즘(dynamic programming) 구현
 
 ## Summary
 _구현부분_
@@ -86,6 +74,19 @@ _개념부분_
 * 형태소 분석의 결과는 모든 경우의 조합들을 포함한다. 하나의 베스트 조합을 찾는 중의성 문제는 품사태거가 같이 해결해준다.
 * HMM 모델에서 확률을 쉽게 inference하기 위해서 bayesian inference와 markov assumption 사용한다. (만약 데이터가 무한으로 있으면 위와 같은 트릭들을 사용안해도됨.)
 * viterbi 알고리즘은 각 time step마다 전 time step만 봐서 optimal path만 table로 저장해놓는게 핵심이다. 이는 중복계산을 피하기 위함이고 table에 모두 저장하면 decoding할 때 한 번에 best sequence를 찾을 수 있다.
+
+## Limitation
+* 입력의 문법적인 오류는 없다고 가정하고 오로지 한글만 가능 (숫자, 콤마 등은 x)
+* Light한 엔트리/기능어 사전때문에 많은 단어들을 커버하지 못함 (오류: assert(fullpath_check == True))
+* 형태소 분석기 TERMINABLE 처리 하지 않음 (ex. 어/EC, 아/EC 생략)
+* 알고리즘 최적화를 실시하지 않음 (속도문제 발생)
+
+## Futher Study
+* 제한사항 보완
+* 형태소 분석기 보완
+   * 오타처리
+   * 띄어쓰기 오류처리
+   * 신조어처리
 
 ## Acknowledgement
 충남대학교, 자연어처리
