@@ -11,21 +11,23 @@
 
 ## Model Description
 
-### 1. 형태소 격자 만들기 (사전/규칙기반 모델) [[**.ipynb**](https://nbviewer.jupyter.org/github/gritmind/review/blob/master/code/task/codes/lexical_recursion.ipynb)]
+### 1. 형태소 격자 만들기 (사전/규칙기반 모델)
 
 * **Lexicon**: 엔트리(체언,용언)사전 / 기능어(조사,어미)사전 (불규칙 사전 구축과 결합규칙을 위한 inflection정보포함, 결합규칙을 위한 POS정보포함) 
 * **Morphotactics**: 형태소 결합 규칙 리스트 (ex. 엔트리+기능어, 엔트리+엔트리)
 * **Orthographic rules**: 형태소 확장 사전 구축에 필요한 불규칙 변형 리스트 (하나의 stem에서 변하는 단어들이 많음)
 * 한국어 특성에 맞게 검색 및 저장을 효율적으로 하기 위해 **trie 자료구조**를 사용해 사전을 구축
 * **Recursion 알고리즘**을 활용해 사전과 결합규칙에 맞는 모든 경우의 수의 형태소 조합들을 출력 
+* 참고 코드: [[**.ipynb**](https://nbviewer.jupyter.org/github/gritmind/review/blob/master/code/task/codes/lexical_recursion.ipynb)]
 
-### 2. 최적의 형태소 (품사 포함) 조합 찾기 (corpus기반 HMM 확률 모델) [[**.ipynb**](https://nbviewer.jupyter.org/github/gritmind/review/blob/master/code/task/codes/pos_viterbi.ipynb)]
+### 2. 최적의 형태소 (품사 포함) 조합 찾기 (corpus기반 HMM 확률 모델) 
 
 * 조건부 확률 (태그|단어) 모델링으로 단어에 대한 태그 예측
 * 확률을 count-base로 corpus로부터 inference하기 위해 bayes rule과 markov assumption 개념 활용
 * 수많은 sequence 조합을 중복없는 계산을 하기 위해 **viterbi 알고리즘** 사용
 * 품사 태깅과 동시에 가장 좋은 형태소 조합을 확률적으로 선택
 * 영어와 달리 형태소 조합이 여러개 있는 한국어 특성도 해결
+* 참고 코드: [[**.ipynb**](https://nbviewer.jupyter.org/github/gritmind/review/blob/master/code/task/codes/pos_viterbi.ipynb)]
 
 ## Prerequisites
 
